@@ -1,6 +1,7 @@
 int main()
-{
-int test;
+{ 
+in
+    t test; d
 test = 3;
 if (test < 5)
 printf("test inferieur a 5");
