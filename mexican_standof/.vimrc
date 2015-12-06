@@ -1,12 +1,12 @@
 " **************************************************************************** "
 "                                                                              "
 "                                                         :::      ::::::::    "
-"    .myvimrc                                           :+:      :+:    :+:    "
+"    .vimrc                                             :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
 "    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2015/12/05 12:16:11 by snicolet          #+#    #+#              "
-"    Updated: 2015/12/05 16:49:27 by dtedgui          ###   ########.fr        "
+"    Updated: 2015/12/06 12:46:34 by snicolet         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -30,3 +30,4 @@ highlight NoSpacesEOL ctermbg=red ctermfg=white guibg=#592929
 highlight DoublesSpaces ctermbg=blue
 match NoSpacesEOL / \+$/
 match DoublesSpaces / \ \ /
+set backupdir=~/.vim/
