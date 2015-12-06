@@ -5,16 +5,14 @@ jj
 d
 kkk
 p
-18gg
-9|
-a
+:cal cursor(18,10)
+i
 <space>
 <echap>
-29gg
-17|
-a
+:cal cursor(29,18)
+i
 <space>
 <echap>
 :%s/\s\+$//g
-<F7>
+gg=G
 :wq
