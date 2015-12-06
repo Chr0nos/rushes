@@ -1,20 +1,13 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d")))
-; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
-
-(menu-bar-mode -1)
-(line-number-mode t)
-(column-number-mode t)
-
 (setq c-default-style "bsd")
-(setq-default fill-column 80)
-
-(setq font-lock-global-modes t)
-(setq whitespace-style '(face trailing))
-
-(setq-default indent-tabs-mode t)
-(setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
-
-; auto close bracket insertion. New in emacs 24
+(setq c-auto-newline t)
+(column-number-mode 1)
+(line-number-mode 1)
+(load-library "paren")
+      (show-paren-mode 1)
 (electric-pair-mode 1)
+(setq show-trailing-whitespace t)
+(custom-set-variables '(show-trailing-whitespace t))
+(setq show-whitespace t)
+(add-hook 'c-mode-common-hook (lambda ()
+								(highlight-regexp "\s\s")))
