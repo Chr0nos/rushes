@@ -5,9 +5,16 @@
 (line-number-mode t)
 (column-number-mode t)
 
-(setq c-basic-offset 4)
+(setq c-default-style "bsd")
 (setq-default fill-column 80)
 
 (setq font-lock-global-modes t)
-(setq whitespace-style `(face trailing))
-; (require `fill-column-indicator) (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1))) (setq-default fci-style `rule) (setq-default fci-rule-color "red") (add-hook `after-change-major-mode-hook `fci-mode)
+(setq whitespace-style '(face trailing))
+
+(setq-default indent-tabs-mode t)
+(setq tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+
+; auto close bracket insertion. New in emacs 24
+(electric-pair-mode 1)
