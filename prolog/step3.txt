@@ -1,0 +1,10 @@
+1: emener la chevre de l autre cote
+2: revenir a vide
+3: emener le loup de l autre cote
+4: ramener la chevre
+5: emener le chou
+6: revenir a vide
+7: emener la chevre
+
+la chevre et le loup ne sont donc jamais ensemble sans surveillance,
+de meme que la chevre et le chou
