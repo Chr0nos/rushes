@@ -1,31 +1,20 @@
-/* hommes et femmes */
-homme(X) :- member(X, [marc,jules,jean,luc,leon,loic,gerard,jacques,herve,paul]).
-femme(X) :- member(X, [anne,betty,sylvie,lisa,julie,valerie,eve]).
-
-/* epoux */
-mari_de(X,Y) :- member((X,Y), [(anne,marc),(betty,luc),(lisa,jules),(eve,loic),(paul,julie)]).
-femme_de(X,Y) :- mari_de(Y,X).
-
-/* enfants de marc et anne */
-enfant_de(X,Y) :- member((X,Y), [(marc,jules),(marc,leon),(marc,jean)]).
-enfant_de(X,Y) :- member((X,Y), [(anne,jules),(anne,leon),(anne,jean)]).
-
-/* enfants de jules et lisa */
-enfant_de(X,Y) :- member((X,Y), [(jules,jacques),(lisa,jacques)]).
-enfant_de(X,Y) :- member((X,Y), [(leon,herve),(sylvie,herve)]).
-
-/* enfants de leon et sylvie */
-enfant_de(X,Y) :- member((X,Y), [(leon,herve),(leon,julie),(sylvie,herve),(sylvie,julie)]).
-
-/* enfants de loic et eve */
-enfant_de(X,Y) :- member((X,Y), [(loic,paul),(loic,valerie)]).
-enfant_de(X,Y) :- member((X,Y), [(eve,paul),(eve,valerie)]).
-
-/* enfants de luc et betty */
-enfant_de(X,Y) :- member((X,Y), [(luc,gerard),(betty,gerard)]).
-enfant_de(X,Y) :- member((X,Y), [(luc,loic),(betty,loic)]).
-enfant_de(X,Y) :- member((X,Y), [(luc,lisa),(betty,lisa)]).
-
-/* belle famille */
-bellemere_de(X,Y) :- member((X,Y), [(anne,lisa),(anne,sylvie),(sylvie,paul),(betty,eve),(eve,julie)]).
-beaupere_de(X,Y) :- member((X,Y), [(marc,lisa),(marc,sylvie),(leon,paul),(luc,eve),(loic,julie)]).
+femmes([anne, lisa, sylvie, julie, betty, eve, valerie]).
+hommes([marc, jean, jules, leon, herve, loic, paul, gerard, luc, jacques]).
+femme(X) :- femmes(L), member(X, L).
+homme(X) :- hommes(L), member(X, L).
+famille(marc, anne, [jean, jules, leon]).
+famille(jules, lisa, [jacques]).
+famille(leon, sylvie, [herve, julie]).
+famille(luc, betty, [lisa, sylvie, loic, gerard]).
+famille(loic, eve, [paul, valerie]).
+famille(paul, julie, []).
+mari_de(H,F) :- famille(H,F,_).
+femme_de(F,H) :- famille(H,F,_).
+enfant_de(E,P) :- famille(P, _, L), member(E, L).
+enfant_de(E,P) :- famille(_, P, L), member(E, L).
+ancetre_de(P,E) :- enfant_de(E, P).
+ancetre_de(PEPE,E) :- enfant_de(E,P), ancetre_de(PEPE, P).
+beaupere_de(BP, BF) :- homme(BP), mari_de(BF, F), enfant_de(F, BP).
+beaupere_de(BP, BF) :- homme(BP), femme_de(BF, F), enfant_de(F, BP).
+bellemere_de(BM, BF) :- femme(BM), mari_de(BF, F), emfant_de(F, BM).
+bellemere_de(BM, BF) :- femme(BM), femme_de(BF, F), emfant_de(F, BM).
